@@ -1,0 +1,107 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/nyquist/Development/infoheap_cgi/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	//
+Alphabetize	notes.adoc	/^=== Alphabetize$/;"	S	section:Code layout
+CFLAGS	Makefile	/^CFLAGS = -llua5.3 -lsqlite3 -lm$/;"	m
+Code layout	notes.adoc	/^== Code layout$/;"	s
+Comments	notes.adoc	/^=== Comments$/;"	S	section:Code layout
+Curly braces	notes.adoc	/^=== Curly braces$/;"	S	section:Code layout
+ENDTAG	index.c	/^#define ENDTAG /;"	d	file:
+Embeded C in html	todo.adoc	/^== Embeded C in html$/;"	s
+Function arguments	notes.adoc	/^=== Function arguments$/;"	S	section:Code layout
+Function names	notes.adoc	/^=== Function names$/;"	S	section:Code layout
+Functions	notes.adoc	/^=== Functions$/;"	S	section:Code layout
+HeaderKV	index.c	/^HeaderKV;$/;"	t	typeref:struct:_HeaderKV	file:
+Hello there!	public/index.html	/^        <\/h1>$/;"	h
+Html	index.c	/^Html;$/;"	t	typeref:struct:_Html	file:
+HttpHeader	index.c	/^HttpHeader;$/;"	t	typeref:struct:_HttpHeader	file:
+Includes	notes.adoc	/^=== Includes $/;"	S	section:Code layout
+Libraries	notes.adoc	/^== Libraries$/;"	s
+Links	notes.adoc	/^== Links$/;"	s
+Links	todo.adoc	/^== Links$/;"	s
+Lua function for inline css	todo.adoc	/^== Lua function for inline css$/;"	s
+LuaTag	index.c	/^LuaTag;$/;"	t	typeref:struct:_LuaTag	file:
+Nesting	notes.adoc	/^=== Nesting$/;"	S	section:Code layout
+NetKV	requests.h	/^} NetKV;$/;"	t	typeref:struct:_NetKV
+POSTFORMAT	requests.h	/^#define POSTFORMAT /;"	d
+Questions	notes.adoc	/^== Questions$/;"	s
+STARTTAG	index.c	/^#define STARTTAG /;"	d	file:
+Structs	notes.adoc	/^=== Structs$/;"	S	section:Code layout
+Tag	index.c	/^Tag;$/;"	t	typeref:struct:_Tag	file:
+_HeaderKV	index.c	/^typedef struct _HeaderKV$/;"	s	file:
+_Html	index.c	/^typedef struct _Html $/;"	s	file:
+_HttpHeader	index.c	/^typedef struct _HttpHeader $/;"	s	file:
+_LuaTag	index.c	/^typedef struct _LuaTag $/;"	s	file:
+_NetKV	requests.h	/^typedef struct _NetKV {$/;"	s
+_Tag	index.c	/^typedef struct _Tag$/;"	s	file:
+allocHeaderCallback	index.c	/^void allocHeaderCallback(line, len, data)$/;"	f
+allocHeaderKV	index.c	/^void allocHeaderKV(out_header, line, len)$/;"	f
+buffer_size	index.c	/^    uint16_t buffer_size; \/* size of @h_buffer *\/$/;"	m	struct:_Html	typeref:typename:uint16_t	file:
+buffer_size	index.c	/^    uint16_t buffer_size; \/* size of @h_buffer *\/$/;"	m	struct:_HttpHeader	typeref:typename:uint16_t	file:
+content_len	index.c	/^    uint32_t content_len;$/;"	m	struct:_LuaTag	typeref:typename:uint32_t	file:
+embedHTMLCallback	index.c	/^void embedHTMLCallback(line, len, data)$/;"	f
+end	index.c	/^    regmatch_t end;$/;"	m	struct:_Tag	typeref:typename:regmatch_t	file:
+endline	index.c	/^    uint32_t endline;$/;"	m	struct:_Tag	typeref:typename:uint32_t	file:
+fp	index.c	/^    FILE *fp;$/;"	m	struct:_Html	typeref:typename:FILE *	file:
+fp	index.c	/^    FILE *fp;$/;"	m	struct:_HttpHeader	typeref:typename:FILE *	file:
+getHtmlInfoCallback	index.c	/^void getHtmlInfoCallback(line, len, data)$/;"	f
+h_buffer	index.c	/^    char *h_buffer;       \/* heap allocated string for the header *\/$/;"	m	struct:_HttpHeader	typeref:typename:char *	file:
+h_buffer	index.c	/^    char *h_buffer;$/;"	m	struct:_LuaTag	typeref:typename:char *	file:
+h_lines	index.c	/^    char **h_lines;$/;"	m	struct:_Html	typeref:typename:char **	file:
+h_parsed	index.c	/^    HeaderKV *h_parsed;   \/* heap allocated key value pairs for the header*\/$/;"	m	struct:_HttpHeader	typeref:typename:HeaderKV *	file:
+h_tags	index.c	/^    Tag *h_tags;          \/* heap allocated tags, that specify that name of that$/;"	m	struct:_Html	typeref:typename:Tag *	file:
+header	index.c	/^    HttpHeader header;    \/* header info for the http *\/$/;"	m	struct:_Html	typeref:typename:HttpHeader	file:
+headerString	requests.h	/^    char *headerString = NULL;$/;"	v	typeref:typename:char *
+headerStringLen	requests.h	/^    uint16_t headerStringLen;$/;"	v	typeref:typename:uint16_t
+hints	requests.h	/^	struct addrinfo hints;$/;"	v	typeref:struct:addrinfo
+htmlFile2Header_alloc	index.c	/^void htmlFile2Header_alloc(out_header, header_path)$/;"	f
+htmlFile2Header_dealloc	index.c	/^void htmlFile2Header_dealloc(header)$/;"	f
+htmlFile2Str_alloc	index.c	/^void htmlFile2Str_alloc (out_html, header, html_path) $/;"	f
+htmlFile2Str_dealloc	index.c	/^void htmlFile2Str_dealloc (out_html) $/;"	f
+htmlRenderCallback	index.c	/^void htmlRenderCallback(file_path, file_name) $/;"	f
+i	requests.h	/^    for (int i = 0; i < len; ++i) {$/;"	v	typeref:typename:int
+in_tag	index.c	/^    bool in_tag;$/;"	m	struct:_LuaTag	typeref:typename:bool	file:
+index	Makefile	/^index: index.c$/;"	t
+key	index.c	/^    char *key;$/;"	m	struct:_HeaderKV	typeref:typename:char *	file:
+key	requests.h	/^        char *key = netkv[i].key;$/;"	v	typeref:typename:char *
+key	requests.h	/^    char *key;$/;"	m	struct:_NetKV	typeref:typename:char *
+keylen	requests.h	/^        int keylen = strlen(key);$/;"	v	typeref:typename:int
+l_tagToStr	index.c	/^int l_tagToStr(L)$/;"	f
+len	requests.h	/^    uint8_t len;$/;"	v	typeref:typename:uint8_t
+lines_count	index.c	/^    uint32_t lines_count;$/;"	m	struct:_Html	typeref:typename:uint32_t	file:
+lines_count	index.c	/^    uint32_t lines_count;$/;"	m	struct:_LuaTag	typeref:typename:uint32_t	file:
+lines_size	index.c	/^    uint32_t lines_size;$/;"	m	struct:_Html	typeref:typename:uint32_t	file:
+llen	requests.h	/^        uint16_t llen = keylen + valuelen + 2;$/;"	v	typeref:typename:uint16_t
+luaTag_alloc	index.c	/^void luaTag_alloc(LuaTag *luaTag, lua_State *L)$/;"	f	typeref:typename:void
+luaTag_dealloc	index.c	/^void luaTag_dealloc(LuaTag *luaTag, lua_State *L)$/;"	f	typeref:typename:void
+main	index.c	/^int main(void)$/;"	f	typeref:typename:int
+match	index.c	/^bool match(char *comp, char *str, regmatch_t *pmatch)$/;"	f	typeref:typename:bool
+name	index.c	/^    char name[10];$/;"	m	struct:_Tag	typeref:typename:char[10]	file:
+netkv	requests.h	/^    NetKV *netkv;$/;"	v	typeref:typename:NetKV *
+outlen	requests.h	/^    uint16_t *outlen;$/;"	v	typeref:typename:uint16_t *
+outlenwidth	requests.h	/^    uint8_t outlenwidth = floor(log10f(headerStringLen) + 1);$/;"	v	typeref:typename:uint8_t
+outp	requests.h	/^    char *outp = NULL;$/;"	v	typeref:typename:char *
+parsed_size	index.c	/^    uint16_t parsed_size; \/* size of the @h_parsed attribute *\/$/;"	m	struct:_HttpHeader	typeref:typename:uint16_t	file:
+path	index.c	/^    char *path;           \/* the path of the file provided in the path $/;"	m	struct:_Html	typeref:typename:char *	file:
+path	requests.h	/^    char * path;$/;"	v	typeref:typename:char *
+port	requests.h	/^    uint8_t port;$/;"	v	typeref:typename:uint8_t
+readLines	index.c	/^void readLines(fp, data, callback) $/;"	f
+request	requests.h	/^    char *request = malloc(requestLen);$/;"	v	typeref:typename:char *
+requestLen	requests.h	/^    uint16_t requestLen = strlen(POSTFORMAT) - 4 + outlenwidth + strlen(headerString);$/;"	v	typeref:typename:uint16_t
+searchFileType	index.c	/^void searchFileType(search_path, filetype, callback)$/;"	f
+start	index.c	/^    regmatch_t start;$/;"	m	struct:_Tag	typeref:typename:regmatch_t	file:
+startline	index.c	/^    uint32_t startline;$/;"	m	struct:_Tag	typeref:typename:uint32_t	file:
+state	index.c	/^    lua_State *state;$/;"	m	struct:_LuaTag	typeref:typename:lua_State *	file:
+tag_count	index.c	/^    uint16_t tag_count;   \/* number of h_tags *\/$/;"	m	struct:_Html	typeref:typename:uint16_t	file:
+value	index.c	/^    char *value;$/;"	m	struct:_HeaderKV	typeref:typename:char *	file:
+value	requests.h	/^        char *value = netkv[i].value;$/;"	v	typeref:typename:char *
+value	requests.h	/^    char *value;$/;"	m	struct:_NetKV	typeref:typename:char *
+valuelen	requests.h	/^        int valuelen = strlen(value);$/;"	v	typeref:typename:int

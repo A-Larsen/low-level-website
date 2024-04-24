@@ -1,0 +1,10 @@
+== Embeded C in html
+for the `readlines()` callback in `indexCallback()` create a token that only
+works with the server, like ejs `<%= %>`. Probably use lua in some way.
+
+== Lua function for inline css
+
+
+== Links
+- https://ejs.co/
+- https://stackshare.io/stackups/ejs-vs-pug

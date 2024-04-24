@@ -1,0 +1,114 @@
+== Code layout
+Every function needs a comment. A description of every paramenter and what it
+does
+
+=== Structs
+basic struct layout
+
+----
+typedef struct _HTML 
+  // ALLOCATE_FUNCTION:     html_file2str_alloc
+  // DEALLOCATED_FUNCTION:  html_file2str_dealloc
+{
+    char *path;     /* the path of the file provided in the path argument */
+    char *h_buffer; /* heap allocated string of the html file */
+    long size;      /* size of @h_buffer */
+    xmlDoc *doc;    /* parsed html */
+}
+HTML;
+----
+
+Always include and ALLOCATE_FUNCTION and DEALLOCATED_FUNCTION and describe what
+each attribute is for.
+
+=== Functions
+basic function layout
+
+[source, c]
+----
+void html_file2str_alloc (path, out_html) 
+    // SYNOPSIS: 
+    //     Gets info from a html file.
+    //
+    //  It gets the path from @path, reads the file, and then places
+    //  information about the file into the @out_html struct
+      
+
+    char *path;     /* path of the html file */
+     
+    HTML *out_html; /* struct the gets allocated with information from the html
+                    * file */
+{
+}
+----
+
+Always include a SYNOPSIS. describe each argument. If mentioning an argument put
+a "@" symbol in from of it. Detailed description is always after SYNOPSIS.
+
+=== Function arguments
+these are listed in the order they should be put in
+h_<name>::   function is allocated on the heap and needs to be freed
+out_<name>:: function writes to this buffer
+in_<name>:: function reads from this buffer
+io_<name>:: function reads and write to this buffer
+
+=== Function names
+underscored
+
+<name>_alloc:: there is heap allocation in this function and needs to be follow by a
+`_d` function before the program ends
+
+<name>_dealloc:: there is heap deallocation in this function
+
+=== Curly braces
+Do newline for left cruly brace. Do this so you can put a comment between the
+keyword and the block statement.
+
+put a comment at the end of every right curly brace that is not a struct
+declaration.
+
+=== Nesting
+Do not nest greater then three layers!!
+
+=== Comments
+Always align comments for arguments or attributes in functions, struct, enumns
+and unions so the columns all start at the same point
+
+for example: 
+
+[source, c]
+----
+{
+    char *path;     /* the path of the file provided in the path argument */
+    char *h_buffer; /* heap allocated string of the html file */
+    long size;      /* size of @h_buffer */
+    xmlDoc *doc;    /* parsed html */
+}
+----
+
+=== Alphabetize
+Alphabetize all Functions. Use function prototyping so errors do not occur.
+
+order: 
+
+1. all capitals
+3. regular
+
+
+=== Includes 
+include system librarys before user libraries. seperate them with a space.
+
+== Libraries
+libxml2:: parsing html
+
+== Questions
+Associated arrays in c.
+
+== Links
+- https://en.wikipedia.org/wiki/Programming_language
+- https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers
+- https://www.tutorialspoint.com/c-program-to-list-all-files-and-sub-directories-in-a-directory
+- https://stackoverflow.com/questions/4553012/checking-if-a-file-is-a-directory-or-just-a-file
+- http://www.lua.org/manual/5.1/manual.html#luaL_checktype
+- https://www.youtube.com/watch?v=It0OFCbbTJE
+- https://www.suse.com/support/kb/doc/?id=000018152
