@@ -39,6 +39,7 @@
 
 #include "perr.h"
 
+
 typedef struct 
 _NetKV 
 {
@@ -54,6 +55,7 @@ typedef struct _Response
     char message[2048];
 } Response;
 
+
 typedef struct
 _NetServer
 {
@@ -66,6 +68,8 @@ _NetServer
     uint8_t reslen;
 }
 NetServer;
+
+typedef void (*post_callback) (NetServer *netServer, char *request);
 
 void netParse_alloc(out, outlen, netkv, len)
     char **out;
@@ -195,8 +199,9 @@ int netInit(netServer, pemFile)
 
     return 0;
 }
-int netListen(netServer)
+int netListen(netServer, callback)
     NetServer *netServer;
+    post_callback callback;
 {
 	printf("Listening..\n");
 
@@ -242,23 +247,24 @@ int netListen(netServer)
 			continue;
 		}
 
-		printf("SSL connection using %s\n", SSL_get_cipher(netServer->ssl));
+		//printf("SSL connection using %s\n", SSL_get_cipher(netServer->ssl));
 
-		printf("Reading request...\n");
+		//printf("Reading request...\n");
 		char request[1024];
         memset(request, 0, 1024);
 		/* int bytes_received = SSL_read(netServer->ssl, request, 1024); */
 		SSL_read(netServer->ssl, request, 1024);
 		/* printf("Received %d bytes.\n", bytes_received); */
-        printf("request: %s\n", request);
+        //printf("request: %s\n", request);
 
-        printf("=======\n");
+        //printf("=======\n");
 
-        char *p = request;
+        char *dup = strdup(request);
+        char *p = dup;
         char *line = p;
         while (*p && *p != '\r') ++p;
         *p = '\0';
-        printf("\n'%s'\n", line);
+        //printf("\n'%s'\n", line);
 
         bool isGet = strstr(line, "GET") != NULL;
         bool isPost = strstr(line, "POST") != NULL;
@@ -270,12 +276,12 @@ int netListen(netServer)
         char *path = p;
         while (*p && *p != ' ') ++p;
         *p = '\0';
-        printf("path: '%s'\n", path);
+        //printf("path: '%s'\n", path);
 
         for (int i = 0; i < netServer->reslen; ++i) {
             if ((!strcmp(netServer->responses[i].method, "GET") && isGet)) {
                 if (!strcmp(netServer->responses[i].path, path)) {
-                    printf("sup\n");
+                    //printf("sup\n");
                     /* int bytes_sent = SSL_write(netServer->ssl, */
                     SSL_write(netServer->ssl,
                             netServer->responses[i].message,
@@ -284,7 +290,8 @@ int netListen(netServer)
             }
             if ((!strcmp(netServer->responses[i].method, "POST") && isPost)) {
                 if (!strcmp(netServer->responses[i].path, path)) {
-                    printf("POST REQUEST!!!\n");
+                    //printf("POST REQUEST!!!\n");
+                    callback(netServer, request);
                     SSL_write(netServer->ssl,
                             netServer->responses[i].message,
                             strlen(netServer->responses[i].message));
@@ -292,22 +299,8 @@ int netListen(netServer)
             }
         }
 
-        /* printf("=======\n"); */
-        /* for (; line < bytes_received; ++i) { */
-        /*     /1* while (line[i] != '\n') line++; *1/ */
-        /*     /1* line[i] = '\0'; *1/ */
-
-        /*     /1* printf("line: %s\n", line); *1/ */
-        /* } */
-
-		/* printf("Sending response...\n"); */
-
-        /* int bytes_sent = SSL_write(netServer->ssl, response, strlen(response)); */
-		/* printf("Sent %d of %d bytes.\n", bytes_sent, (int)strlen(response)); */
-
-		/* printf("Closing connection...\n"); */
-
         SSL_shutdown(netServer->ssl);
+        free(dup);
 		close(socket_client);
 		SSL_free(netServer->ssl);
 	}

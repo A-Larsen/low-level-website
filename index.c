@@ -31,6 +31,11 @@
 
 #include "render.h"
 
+void handle_posts (NetServer *netServer, char *request) {
+    printf("YO, HANDLE A POST!\n");
+    printf("handle_posts request:\n%s\n", request);
+}
+
 void htmlRenderCallback(file_path, file_name, linenum) 
     char *file_path; 
     char *file_name;
@@ -78,10 +83,11 @@ void htmlRenderCallback(file_path, file_name, linenum)
     /* netAssign(&netServer, "/", "GET", "<h1>hello!<h1>"); */
     /* netAssign(&netServer, "/", "GET", render.h_buffer); */
     netAssign(&netServer, "/next", "GET", "<h1>hello then</h1>");
+    printf("WHAT IS THAT?\n");
     netAssign(&netServer, "/", "GET", render.h_buffer);
     netAssign(&netServer, "/", "POST", "<h1>might work</h1>");
 
-    netListen(&netServer);
+    netListen(&netServer, handle_posts);
     netClose(netServer);
 
     luaTag_dealloc(&luaTag, L);
