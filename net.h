@@ -69,7 +69,7 @@ _NetServer
 }
 NetServer;
 
-typedef void (*post_callback) (NetServer *netServer, char *request);
+typedef void (*post_callback) (char *request, char *message);
 
 void netParse_alloc(out, outlen, netkv, len)
     char **out;
@@ -291,10 +291,12 @@ int netListen(netServer, callback)
             if ((!strcmp(netServer->responses[i].method, "POST") && isPost)) {
                 if (!strcmp(netServer->responses[i].path, path)) {
                     //printf("POST REQUEST!!!\n");
-                    callback(netServer, request);
+                    char message[2048] = {0};
+                    callback(request, message);
+                    //char *message = "<h1>hello</h1>\0";
                     SSL_write(netServer->ssl,
-                            netServer->responses[i].message,
-                            strlen(netServer->responses[i].message));
+                            message,
+                            strlen(message));
                 }
             }
         }

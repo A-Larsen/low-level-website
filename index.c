@@ -31,9 +31,11 @@
 
 #include "render.h"
 
-void handle_posts (NetServer *netServer, char *request) {
+void handle_posts (char *request, char *message) {
     printf("YO, HANDLE A POST!\n");
     printf("handle_posts request:\n%s\n", request);
+    memcpy(message, "<h1>HELLO</h1>\0", sizeof(char) * 14);
+
 }
 
 void htmlRenderCallback(file_path, file_name, linenum) 
