@@ -77,10 +77,9 @@ void htmlRenderCallback(file_path, file_name, linenum)
     netInit(&netServer, PEMFILE);
     /* netAssign(&netServer, "/", "GET", "<h1>hello!<h1>"); */
     /* netAssign(&netServer, "/", "GET", render.h_buffer); */
-    netAssign(&netServer, "/other", "GET", "<h1>bye</h1>");
     netAssign(&netServer, "/next", "GET", "<h1>hello then</h1>");
     netAssign(&netServer, "/", "GET", render.h_buffer);
-    netAssign(&netServer, "/", "POST", "might work");
+    netAssign(&netServer, "/", "POST", "<h1>might work</h1>");
 
     netListen(&netServer);
     netClose(netServer);

@@ -261,7 +261,12 @@ int netListen(netServer)
         printf("\n'%s'\n", line);
 
         bool isGet = strstr(line, "GET") != NULL;
-        p  = line += 4;
+        bool isPost = strstr(line, "POST") != NULL;
+        if (isGet) {
+            p  = line += 4;
+        }else if (isPost) {
+            p  = line += 5;
+        }
         char *path = p;
         while (*p && *p != ' ') ++p;
         *p = '\0';
@@ -272,6 +277,14 @@ int netListen(netServer)
                 if (!strcmp(netServer->responses[i].path, path)) {
                     printf("sup\n");
                     /* int bytes_sent = SSL_write(netServer->ssl, */
+                    SSL_write(netServer->ssl,
+                            netServer->responses[i].message,
+                            strlen(netServer->responses[i].message));
+                }
+            }
+            if ((!strcmp(netServer->responses[i].method, "POST") && isPost)) {
+                if (!strcmp(netServer->responses[i].path, path)) {
+                    printf("POST REQUEST!!!\n");
                     SSL_write(netServer->ssl,
                             netServer->responses[i].message,
                             strlen(netServer->responses[i].message));
